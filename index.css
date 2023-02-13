@@ -40,6 +40,12 @@ body {
   padding: 0;
 }
 
+
+#false-positive-count, #false-negative-count {
+  background-color: rgb(176, 49, 218);
+  color: #fff;
+}
+
 #samples-count, #true-negative-count {
   background-color: #777;
   color: #fff;

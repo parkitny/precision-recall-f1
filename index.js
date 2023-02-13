@@ -206,10 +206,12 @@ function updateStats() {
   var positive = area(rectPositive);
   var classifiedPositive = area(rectClassifiedPositive)
   var tp = intersectionArea(rectPositive, rectClassifiedPositive);
+  var fp = classifiedPositive - tp;
   var precision = tp / classifiedPositive;
   var recall = tp / positive;
   var negative = sampleCount - positive;
   var tn = sampleCount - positive - classifiedPositive + tp;
+  var fn = sampleCount - tp - fp - tn;
   var specificity = tn / negative;
   var f1 = 2 / ((1 / recall) + (1 / precision));
 
@@ -218,6 +220,8 @@ function updateStats() {
   document.querySelector("#classified-positive-samples-count").innerHTML = classifiedPositive;
   document.querySelector("#true-positive-count").innerHTML = roundThreeDec(tp);
   document.querySelector("#true-negative-count").innerHTML = roundThreeDec(tn);
+  document.querySelector("#false-positive-count").innerHTML = roundThreeDec(fp);
+  document.querySelector("#false-negative-count").innerHTML = roundThreeDec(fn);
   document.querySelector("#precision").innerHTML = roundThreeDec(precision);
   document.querySelector("#recall").innerHTML = roundThreeDec(recall);
   document.querySelector("#specificity").innerHTML = roundThreeDec(specificity);
@@ -248,13 +252,13 @@ function initBounce() {
       return;
     }
 
-    var posRect = getRect(areas.positive);
+    var posRect = getRect(areas.classifiedPositive);
     var delta = 10;
     if (Math.random() > 0.5) {
       delta = -10;
     }
     posRect.y = posRect.y + delta;
-    setRect(areas.positive, posRect);
+    setRect(areas.classifiedPositive, posRect);
     updateStats();
     setTimeout(bounce, 600);
   }
@@ -275,9 +279,9 @@ var areas = {
 
 var humanInteractionYet = false;
 
-setRect(areas.positive, {x: 160, y: 60, width: 200, height: 200});
-setRect(areas.classifiedPositive, {x: 130, y: 180, width: 300, height: 100});
-setRect(areas.allSamples, {x: 10, y: 10, width: 500, height: 500});
+setRect(areas.positive, {x: 800, y: 400, width: 80, height: 80});
+setRect(areas.classifiedPositive, {x: 775, y: 350, width: 150, height: 100});
+setRect(areas.allSamples, {x: 10, y: 10, width: 2125, height: 865});
 updateStats();
 tests();
 initBounce();

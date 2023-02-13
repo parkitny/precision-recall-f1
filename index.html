@@ -29,7 +29,13 @@
     <tr title="The negatives that were classified negative. In this case - the purely black area excluding the red and green.">
       <td class="label">True Negatives</td> <td class="metric" id="true-negative-count"></td>
     </tr>
-    <tr title="Σ True positive / Σ Predicted condition positive">
+    <tr title="Negatives that were classified positive">
+      <td class="label">False Positives</td> <td class="metric" id="false-positive-count"></td>
+    </tr>
+    <tr title="Positives that were classified negative">
+      <td class="label">False Negatives</td> <td class="metric" id="false-negative-count"></td>
+    </tr>
+    <tr title="Σ True positive / Σ Predicted condition positive, Of the classes classified as positive, how many are actually incorrect?">
       <td class="label">Precision</td> <td class="metric" id="precision"></td>
     </tr>
     <tr title="Σ True positive / Σ Condition positive">
@@ -49,18 +55,6 @@
     <div class="resize-drag" id="classified-positive">Classified Positive</div>
   </div>
   <script src="index.js"></script>
-
-
-
-  <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-  <script>
-      (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
-      function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
-      e=o.createElement(i);r=o.getElementsByTagName(i)[0];
-      e.src='https://www.google-analytics.com/analytics.js';
-      r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));
-      ga('create','UA-4533496-22','auto');ga('send','pageview');
-  </script>  
 </body>
 
 </html>
